@@ -35,6 +35,15 @@ describe('ToDoListController', function() {
             expect(lastItem.name).toEqual(newItemName);
             expect(lastItem.finished).toBeFalsy();
         });
+
+        it('should reset status of newItem', function() {
+            var newItemName = 'New Item';
+            $scope.newItem = {name: newItemName};
+
+            $scope.addToDoItem();
+
+            expect($scope.newItem).toEqual({});
+        });
     });
 
 });

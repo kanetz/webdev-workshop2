@@ -9,7 +9,7 @@
         ];
 
         $scope.addToDoItem = function() {
-
+            $scope.items.push($scope.newItem);
         };
     });
 
