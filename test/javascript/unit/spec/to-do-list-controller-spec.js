@@ -20,7 +20,6 @@ describe('ToDoListController', function() {
                 {name: 'My Task 5', finished: true}
             ]);
         });
-
     });
 
 });
