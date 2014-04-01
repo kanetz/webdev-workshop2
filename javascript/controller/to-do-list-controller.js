@@ -1,12 +1,8 @@
 (function(myApp) {
-    myApp.controller('ToDoListController', function($scope) {
-        $scope.items = [
-            {"name": "My Task 1", "finished": false},
-            {"name": "My Task 2", "finished": false},
-            {"name": "My Task 3", "finished": false},
-            {"name": "My Task 4", "finished": true},
-            {"name": "My Task 5", "finished": true}
-        ];
+    myApp.controller('ToDoListController', function($scope, $http) {
+        $http.get('javascript/data.json').success(function populateToDoList(items) {
+            $scope.items = items;
+        });
 
         $scope.addToDoItem = function() {
             $scope.items.push($scope.newItem);
