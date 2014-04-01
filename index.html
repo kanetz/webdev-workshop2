@@ -12,7 +12,13 @@
 <body ng-app="myApp">
 
 <ul id="to-do-list" ng-controller="ToDoListController">
-    <li ng-repeat="item in items">{{item.name}}</li>
+    <li class="to-do-item" ng-repeat="item in items">{{item.name}}</li>
+    <li class="to-do-item new-item">
+        <form name="addToDoItemForm" ng-submit="addToDoItem()">
+            <input type="text" ng-model="newItem.name" placeholder="Add new item" />
+            <input type="submit" value="Add" />
+        </form>
+    </li>
 </ul>
 
 </body>

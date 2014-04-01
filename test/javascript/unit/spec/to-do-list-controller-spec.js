@@ -22,4 +22,19 @@ describe('ToDoListController', function() {
         });
     });
 
+    describe('addToDoItem()', function() {
+        it('should append the newItem to the items list', function() {
+            var numberOfItems = $scope.items.length,
+                newItemName = 'New Item';
+            $scope.newItem = {name: newItemName};
+
+            $scope.addToDoItem();
+
+            expect($scope.items.length).toEqual(numberOfItems + 1);
+            var lastItem = $scope.items[numberOfItems];
+            expect(lastItem.name).toEqual(newItemName);
+            expect(lastItem.finished).toBeFalsy();
+        });
+    });
+
 });

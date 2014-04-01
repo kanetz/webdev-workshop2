@@ -7,6 +7,10 @@
             {"name": "My Task 4", "finished": true},
             {"name": "My Task 5", "finished": true}
         ];
+
+        $scope.addToDoItem = function() {
+
+        };
     });
 
 })(window.myApp);
