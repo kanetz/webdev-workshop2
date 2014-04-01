@@ -5,20 +5,21 @@ describe('ToDoListController', function() {
 
     beforeEach(module(myApp.name));
 
-    beforeEach(inject(function($rootScope, $controller) {
+    beforeEach(inject(function($rootScope, $controller, $httpBackend) {
         $scope = $rootScope.$new();
+        $httpBackend.expectGET('javascript/data.json').respond(givenExistingItems());
         $controller('ToDoListController', {$scope: $scope});
+        $httpBackend.flush();
+    }));
+
+    afterEach(inject(function($httpBackend) {
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
     }));
 
     describe('after initialized', function() {
         it('should expose $scope.items', function() {
-            expect($scope.items).toEqual([
-                {name: 'My Task 1', finished: false},
-                {name: 'My Task 2', finished: false},
-                {name: 'My Task 3', finished: false},
-                {name: 'My Task 4', finished: true},
-                {name: 'My Task 5', finished: true}
-            ]);
+            expect($scope.items).toEqual(givenExistingItems());
         });
     });
 
@@ -45,5 +46,9 @@ describe('ToDoListController', function() {
             expect($scope.newItem).toEqual({});
         });
     });
+
+    function givenExistingItems() {
+        return [{name: 'data', finished: true}];
+    }
 
 });
