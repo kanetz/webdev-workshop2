@@ -6,13 +6,13 @@
 
     <script type="text/javascript" src="javascript/lib/angular.min.js"></script>
     <script type="text/javascript" src="javascript/main.js"></script>
-    <script type="text/javascript" src="javascript/to-do-list-controller.js"></script>
+    <script type="text/javascript" src="javascript/controller/to-do-list-controller.js"></script>
 </head>
 
 <body ng-app="myApp">
 
 <ul id="to-do-list" ng-controller="ToDoListController">
-
+    <li ng-repeat="item in items">{{item.name}}</li>
 </ul>
 
 </body>
